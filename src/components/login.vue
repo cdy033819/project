@@ -51,8 +51,8 @@ export default {
 
       //登录form表单数据对象
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       }
     }
   },
