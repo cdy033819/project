@@ -16,6 +16,7 @@
           :unique-opened="true"
           :collapse="show"
           :collapse-transition="false"
+          :router="true"
         >
           <div class="toggle_bar" @click="show = !show" :style="{width:show?'65px':'200px'}">|||</div>
           <el-submenu
@@ -28,11 +29,10 @@
               <i :class="'iconfont icon-'+iconList[k]"></i>
               <span>{{item.authName}}</span>
             </template>
-            <el-menu-item
-              :index="item.id+'-'+item2.id"
-              v-for="item2 in item.children"
-              :key="item2.id"
-            >
+            <el-menu-item 
+            :index="item2.path" 
+            v-for="item2 in item.children" 
+            :key="item2.id">
               <i class="el-icon-menu"></i>
               <span>{{ item2.authName }}</span>
             </el-menu-item>
@@ -63,7 +63,7 @@ export default {
       this.$confirm('确定退出系统吗?', '退出', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
-        type: 'warning'
+        type: 'success'
       })
         .then(() => {
           window.sessionStorage.removeItem('token')
