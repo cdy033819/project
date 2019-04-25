@@ -6,6 +6,13 @@
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card class="box-card">
+      <el-dialog title="添加用户" :visible.sync="addUser" width="30%">
+        <span>这是一段信息</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="addUser = false">取 消</el-button>
+          <el-button type="primary" @click="addUser = false">确 定</el-button>
+        </span>
+      </el-dialog>
       <el-row :gutter="20">
         <el-col :span="8">
           <el-input
@@ -19,7 +26,7 @@
           </el-input>
         </el-col>
         <el-col :span="8">
-          <el-button type="primary">添加用户</el-button>
+          <el-button type="primary" @click="addUser=true">添加用户</el-button>
         </el-col>
       </el-row>
       <el-table stripe :data="userList" border style="width: 100%">
@@ -85,6 +92,7 @@ export default {
   },
   data() {
     return {
+      addUser: false,
       //声明用户列表数据成员
       tot: 0,
       input: '',
